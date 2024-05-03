@@ -91,6 +91,17 @@ jobs:
           project.save
           EOF
 
+       - name: Build
+        id: build
+        run: |
+          xcodebuild build -workspace SignIn/SignIn.xcworkspace \
+          -scheme "SignIn" \
+          -archivePath $RUNNER_TEMP/SignIn.xcarchive \
+          -sdk iphoneos \
+          -configuration Debug \
+          -destination generic/platform=iOS \
+          clean archive | tee build_output.txt
+
       - name: Build and Archive
         id: build_archive
         run: |
