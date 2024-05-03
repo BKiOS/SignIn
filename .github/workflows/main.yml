@@ -90,7 +90,7 @@ jobs:
           project.save
           EOF
 
-       - name: Build
+      - name: Build
         id: build
         run: |
           xcodebuild build -workspace SignIn/SignIn.xcworkspace \
