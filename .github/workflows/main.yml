@@ -96,8 +96,7 @@ jobs:
         run: |
           xcodebuild archive -workspace SignIn/SignIn.xcworkspace \
           -scheme SignIn -archivePath "$RUNNER_TEMP/SignIn.xcarchive" \
-          -sdk iphonesimulator -configuration Debug \
-          -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max,OS=16.2' \
+          -sdk iphoneos -configuration Release \
           clean archive DEVELOPMENT_TEAM="X372X3URRM" \
           PROVISIONING_PROFILE_SPECIFIER="DemoTest" -allowProvisioningUpdates \
           | tee build_output.txt
