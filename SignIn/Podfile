@@ -6,10 +6,7 @@ target 'SignIn' do
   use_frameworks!
 
   # Pods for SignIn
-
-  pod 'Firebase/Analytics'
   pod 'GoogleSignIn'
-  pod 'Firebase/Auth'
   
   target 'SignInTests' do
     inherit! :search_paths
