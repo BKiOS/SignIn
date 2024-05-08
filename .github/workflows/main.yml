@@ -75,4 +75,5 @@ jobs:
       - name: Build and Archive
         id: build_archive
         run: |
+          ls
           fastlane beta
