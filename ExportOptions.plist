@@ -13,8 +13,6 @@
 		<key>com.newProject.SignIn</key>
 		<string>DemoTest</string>
 	</dict>
-	<key>signingCertificate</key>
-	<string>F743FEF92ED488DD77C73D696538656C9D156FEB</string>
 	<key>signingStyle</key>
 	<string>manual</string>
 	<key>stripSwiftSymbols</key>
