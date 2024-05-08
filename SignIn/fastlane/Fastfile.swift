@@ -19,8 +19,7 @@ class Fastfile: LaneFile {
     func package(config: Configuration) {
         var export: [String: Any]? = [
             "signingStyle": "manual",
-            "provisioningProfiles": [appIdentifier: "DemoTest"],
-            "signingCertificate": "F743FEF92ED488DD77C73D696538656C9D156FEB"
+            "provisioningProfiles": [appIdentifier: "DemoTest"]
         ]
 
         buildApp(workspace: "SignIn.xcworkspace", scheme: "SignIn", clean: true, exportMethod: "development", exportOptions: .userDefined(export))
