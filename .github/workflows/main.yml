@@ -36,7 +36,8 @@ jobs:
         run: cp -r SignIn/Podfile .
       - name: Install CocoaPods
         run: |
-          sudo gem install cocoapods -v '1.11.2'
+          sudo gem install cocoapods
+          sudo gem install fastlane
           pod repo list
           pod setup
       - name: Install dependencies
@@ -74,26 +75,4 @@ jobs:
       - name: Build and Archive
         id: build_archive
         run: |
-          xcodebuild archive -workspace SignIn/SignIn.xcworkspace \
-          -scheme SignIn \
-          -archivePath /Users/runner/work/_temp/SignIn.xcarchive \
-          -sdk iphoneos \
-          -configuration Debug \
-          clean archive \
-          DEVELOPMENT_TEAM=X372X3URRM \
-          PROVISIONING_PROFILE_SPECIFIER=DemoTest \
-          -allowProvisioningUpdates
-          
-      - name: List files in $RUNNER_TEMP
-        run: |
-          ls -a "$RUNNER_TEMP"
-          ls -a "$RUNNER_TEMP/SignIn.xcarchive"
-          ls -a "$RUNNER_TEMP/SignIn.xcarchive/Products/Applications/"
-      - name: Export IPA
-        run: |
-          xcodebuild -archivePath "$RUNNER_TEMP/SignIn.xcarchive" \
-                     -exportOptionsPlist ExportOptions.plist \
-                     -exportPath "$RUNNER_TEMP/build" \
-                     -allowProvisioningUpdates \
-                     -exportArchive \
-                     | tee build_output.txt
+          fastlane beta
