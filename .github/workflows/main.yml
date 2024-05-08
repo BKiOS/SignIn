@@ -75,5 +75,6 @@ jobs:
       - name: Build and Archive
         id: build_archive
         run: |
+          cd SignIn/
           ls
           fastlane beta
