@@ -112,4 +112,4 @@ jobs:
         run: |
           curl -u ${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }} \
                --upload-file /Users/runner/work/SignIn/SignIn/SignIn/SignIn.ipa \
-               http://spanartifacts.spanllc.com/Android/sprint/
+               https://spanartifacts.spanllc.com/repository/Android/iOS/Tax990/
