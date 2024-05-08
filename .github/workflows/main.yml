@@ -79,4 +79,4 @@ jobs:
           ls
           fastlane init
           # chmod +x ./fastlane/FastlaneRunner
-          fastlane betaLane
+          fastlane beta
