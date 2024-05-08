@@ -25,7 +25,8 @@ class Fastfile: LaneFile {
         let date = Date.getCurrentDate()
         
         let buildName = "SignIn_\(version)_\(date).ipa"
-        buildApp(workspace: "SignIn.xcworkspace", scheme: "SignIn", clean: true, outputName: "\(buildName)", exportMethod: "development", exportOptions: .userDefined(export))
+        print(buildName)
+        buildApp(workspace: "SignIn.xcworkspace", scheme: "SignIn", clean: true, outputName: .userDefined(buildName), exportMethod: "development", exportOptions: .userDefined(export))
     }
     
     
