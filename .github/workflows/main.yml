@@ -77,5 +77,6 @@ jobs:
         run: |
           cd SignIn/
           ls
+          chmod +x ./fastlane/FastlaneRunner
           fastlane init
           fastlane beta
