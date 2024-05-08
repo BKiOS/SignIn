@@ -21,8 +21,11 @@ class Fastfile: LaneFile {
             "signingStyle": "manual",
             "provisioningProfiles": [appIdentifier: "DemoTest"]
         ]
-
-        buildApp(workspace: "SignIn.xcworkspace", scheme: "SignIn", clean: true, exportMethod: "development", exportOptions: .userDefined(export))
+        let version = getVersionNumber(target: "SignIn")
+        let date = Date.getCurrentDate()
+        
+        let buildName = "SignIn_\(version)_\(date).ipa"
+        buildApp(workspace: "SignIn.xcworkspace", scheme: "SignIn", clean: true, outputName: "\(buildName)", exportMethod: "development", exportOptions: .userDefined(export))
     }
     
     
@@ -59,4 +62,16 @@ struct Production: Configuration {
     var buildConfiguration = "Production"
     var appIdentifier = "com.newProject.SignIn"
     var exportMethod = "ad-hoc"
+}
+extension Date {
+
+ static func getCurrentDate() -> String {
+
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "MMddyyyy"
+
+        return dateFormatter.string(from: Date())
+
+    }
 }
