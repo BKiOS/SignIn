@@ -108,3 +108,8 @@ jobs:
           fastlane init
           chmod +x ./fastlane/FastlaneRunner
           fastlane beta
+      - name: Upload IPA to Nexus
+        run: |
+          curl -u ${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }} \
+               --upload-file /Users/runner/work/SignIn/SignIn/SignIn/SignIn.ipa \
+               http://spanartifacts.spanllc.com/Android/sprint/
