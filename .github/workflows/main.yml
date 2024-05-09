@@ -138,6 +138,17 @@ jobs:
                --upload-file $RUNNER_TEMP/build/SignIn_$(git rev-parse --short HEAD)_$(date +'%m%d%Y')_b1.ipa \
                https://spanartifacts.spanllc.com/repository/Android/iOS/Tax990/
 
+      - name: Install fastlane
+        run: |
+          gem install fastlane -N
+
+      - name: Upload to TestFlight
+        run: |
+          fastlane pilot upload -u ${{ secrets.APP_STORE_CONNECT_USERNAME }} -i "$RUNNER_TEMP/build/SignIn_$(git rev-parse --short HEAD)_$(date +'%m%d%Y')_b1.ipa" -a ${{ secrets.AppBundleID }}
+        env:
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
+          PILOT_APPLE_ID: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
+
       - name: Clean up workspace
         run: |
           rm -rf $RUNNER_TEMP/
