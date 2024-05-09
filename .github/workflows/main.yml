@@ -164,6 +164,7 @@ jobs:
           PILOT_APPLE_ID: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
           PILOT_APP_IDENTIFIER: ${{ secrets.AppBundleID }}
+          FASTLANE_ITC_TEAM_NAME: ${{ secrets.ITC_TEAM_NAME }}
           
       - name: Clean up workspace
         run: |
