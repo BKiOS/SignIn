@@ -135,7 +135,7 @@ jobs:
       - name: Upload IPA to Nexus
         run: |
           curl -u ${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }} \
-               --upload-file /Users/runner/work/SignIn/SignIn/SignIn/SignIn_$(git rev-parse --short HEAD)_$(date +'%m%d%Y')_b1.ipa \
+               --upload-file $RUNNER_TEMP/build/SignIn_$(git rev-parse --short HEAD)_$(date +'%m%d%Y')_b1.ipa \
                https://spanartifacts.spanllc.com/repository/Android/iOS/Tax990/
 
       - name: Clean up workspace
