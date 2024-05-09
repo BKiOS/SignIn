@@ -131,7 +131,7 @@ jobs:
           ls
       - name: Rename IPA file
         run: |
-          mv $RUNNER_TEMP/build/SignIn.ipa build/SignIn-$(date +'%mm%dd%yyyy')_b1.ipa
+          mv $RUNNER_TEMP/build/SignIn.ipa $RUNNER_TEMP/build/SignIn_$(date +'%m%d%Y')_b1.ipa
           cd /Users/runner/work/_temp/build
           ls
           cd $RUNNER_TEMP/build
