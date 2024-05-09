@@ -157,15 +157,24 @@ jobs:
       #   run: |
       #     fastlane pilot upload -u $APP_STORE_CONNECT_USERNAME -i $RUNNER_TEMP/build/SignIn.ipa -a $AppBundleID
           
-      - name: Build and upload to App Store
+      # - name: Build and upload to App Store
+      #   run: |
+      #     fastlane pilot upload --ipa "$RUNNER_TEMP/build/SignIn.ipa"
+      #   env:
+      #     PILOT_APPLE_ID: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
+      #     FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
+      #     PILOT_APP_IDENTIFIER: ${{ secrets.AppBundleID }}
+      #     FASTLANE_ITC_TEAM_NAME: ${{ secrets.ITC_TEAM_NAME }}
+          
+      - name: Upload to TestFlight
+        env:
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+          APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
         run: |
           fastlane pilot upload --ipa "$RUNNER_TEMP/build/SignIn.ipa"
-        env:
-          PILOT_APPLE_ID: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
-          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
-          PILOT_APP_IDENTIFIER: ${{ secrets.AppBundleID }}
-          FASTLANE_ITC_TEAM_NAME: ${{ secrets.ITC_TEAM_NAME }}
-          
+        
       - name: Clean up workspace
         run: |
           rm -rf $RUNNER_TEMP/
