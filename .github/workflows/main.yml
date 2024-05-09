@@ -140,7 +140,7 @@ jobs:
 
       - name: Install fastlane
         run: |
-          gem install fastlane -N
+          gem install fastlane
           
       - name: Debug App Store Connect Username
         run: |
@@ -152,9 +152,10 @@ jobs:
           APP_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: $APP_SPECIFIC_PASSWORD
           PILOT_APPLE_ID: $APP_STORE_CONNECT_USERNAME
+          AppBundleID: ${{ secrets.AppBundleID }}
           
         run: |
-          fastlane pilot upload -u $APP_STORE_CONNECT_USERNAME -i "$RUNNER_TEMP/build/SignIn.ipa" -a ${{ secrets.AppBundleID }}         
+          fastlane pilot upload -u $APP_STORE_CONNECT_USERNAME -i "$RUNNER_TEMP/build/SignIn.ipa" -a $AppBundleID      
 
       - name: Clean up workspace
         run: |
