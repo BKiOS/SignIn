@@ -126,31 +126,35 @@ jobs:
           xcodebuild -exportArchive -archivePath $RUNNER_TEMP/SignIn.xcarchive -exportOptionsPlist $EXPORT_OPTS_PATH -exportPath $RUNNER_TEMP/build
           cd $RUNNER_TEMP/build
           ls
-      - name: Rename IPA file
-        run: |
-          mv $RUNNER_TEMP/build/SignIn.ipa $RUNNER_TEMP/build/SignIn_$(git rev-parse --short HEAD)_$(date +'%m%d%Y')_b1.ipa
-          cd $RUNNER_TEMP/build
-          ls
+      # - name: Rename IPA file
+      #   run: |
+      #     mv $RUNNER_TEMP/build/SignIn.ipa $RUNNER_TEMP/build/SignIn_$(git rev-parse --short HEAD)_$(date +'%m%d%Y')_b1.ipa
+      #     cd $RUNNER_TEMP/build
+      #     ls
           
-      - name: Upload IPA to Nexus
-        run: |
-          curl -u ${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }} \
-               --upload-file $RUNNER_TEMP/build/SignIn_$(git rev-parse --short HEAD)_$(date +'%m%d%Y')_b1.ipa \
-               https://spanartifacts.spanllc.com/repository/Android/iOS/Tax990/
+      # - name: Upload IPA to Nexus
+      #   run: |
+      #     curl -u ${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }} \
+      #          --upload-file $RUNNER_TEMP/build/SignIn_$(git rev-parse --short HEAD)_$(date +'%m%d%Y')_b1.ipa \
+      #          https://spanartifacts.spanllc.com/repository/Android/iOS/Tax990/
 
       - name: Install fastlane
         run: |
           gem install fastlane -N
+          
       - name: Debug App Store Connect Username
         run: |
           echo "App Store Connect Username: ${{ secrets.APP_STORE_CONNECT_USERNAME }}"
           
       - name: Upload to TestFlight
-        run: |
-          fastlane pilot upload -u ${{ secrets.APP_STORE_CONNECT_USERNAME }} -i "$RUNNER_TEMP/build/SignIn_$(git rev-parse --short HEAD)_$(date +'%m%d%Y')_b1.ipa" -a ${{ secrets.AppBundleID }}
         env:
-          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
-          PILOT_APPLE_ID: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
+          APP_STORE_CONNECT_USERNAME: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
+          APP_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: $APP_SPECIFIC_PASSWORD
+          PILOT_APPLE_ID: $APP_STORE_CONNECT_USERNAME
+          
+        run: |
+          fastlane pilot upload -u $APP_STORE_CONNECT_USERNAME -i "$RUNNER_TEMP/build/SignIn.ipa" -a ${{ secrets.AppBundleID }}         
 
       - name: Clean up workspace
         run: |
