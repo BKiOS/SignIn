@@ -159,7 +159,7 @@ jobs:
           
       - name: Build and upload to App Store
         run: |
-          fastlane pilot upload --ipa "$RUNNER_TEMP/build/SignIn.ipa" --skip_screenshots --skip_metadata
+          fastlane pilot upload --ipa "$RUNNER_TEMP/build/SignIn.ipa"
         env:
           PILOT_APPLE_ID: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
