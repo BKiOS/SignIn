@@ -65,7 +65,6 @@ jobs:
       - name: Install CocoaPods
         run: |
           sudo gem install cocoapods
-          sudo gem install fastlane
           pod repo list
           pod setup
       - name: Install dependencies
@@ -132,11 +131,13 @@ jobs:
           mv $RUNNER_TEMP/build/SignIn.ipa $RUNNER_TEMP/build/SignIn_$(git rev-parse --short HEAD)_$(date +'%m%d%Y')_b1.ipa
           cd $RUNNER_TEMP/build
           ls
+          
+      - name: Upload IPA to Nexus
+        run: |
+          curl -u ${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }} \
+               --upload-file /Users/runner/work/SignIn/SignIn/SignIn/SignIn_$(git rev-parse --short HEAD)_$(date +'%m%d%Y')_b1.ipa \
+               https://spanartifacts.spanllc.com/repository/Android/iOS/Tax990/
+
       - name: Clean up workspace
         run: |
           rm -rf $RUNNER_TEMP/
-      # - name: Upload IPA to Nexus
-      #   run: |
-      #     curl -u ${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }} \
-      #          --upload-file /Users/runner/work/SignIn/SignIn/SignIn/SignIn.ipa \
-      #          https://spanartifacts.spanllc.com/repository/Android/iOS/Tax990/
