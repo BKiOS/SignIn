@@ -46,7 +46,8 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           mv BKiOS.p8 $RUNNER_TEMP/AuthKey.p8
-          
+          cd $RUNNER_TEMP
+          ls
       - name: check Xcode version
         run: /usr/bin/xcodebuild -version
       - name: Copy Podfile
