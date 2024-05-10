@@ -48,6 +48,8 @@ jobs:
           mv BKiOS.json $RUNNER_TEMP/AuthKey.json
           cd $RUNNER_TEMP
           ls
+          cat $RUNNER_TEMP/AuthKey.json
+          
       - name: check Xcode version
         run: /usr/bin/xcodebuild -version
       - name: Copy Podfile
