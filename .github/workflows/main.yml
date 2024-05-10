@@ -171,7 +171,7 @@ jobs:
           # fastlane pilot upload --username $PILOT_APPLE_ID --ipa "$RUNNER_TEMP/build/SignIn.ipa"
           fastlane pilot upload \
           --api_key_path $FASTLANE_APPLE_API_KEY_PATH \
-          --api_key_id $APP_STORE_CONNECT_API_KEY_ID \
+          --api_key $APP_STORE_CONNECT_API_KEY_ID \
           --app_identifier $PILOT_APP_IDENTIFIER \
           --ipa "$RUNNER_TEMP/build/SignIn.ipa"
           
