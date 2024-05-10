@@ -168,6 +168,7 @@ jobs:
           
       - name: Upload to TestFlight
         env:
+          APP_STORE_CONNECT_USERNAME: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
           APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
           APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
           APPLE_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
