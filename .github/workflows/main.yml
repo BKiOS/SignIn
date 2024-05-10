@@ -161,6 +161,7 @@ jobs:
           APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
           APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
           APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
           PILOT_APPLE_ID: $APP_STORE_CONNECT_USERNAME
         run: |
           # fastlane pilot upload --ipa "$RUNNER_TEMP/build/SignIn.ipa"
