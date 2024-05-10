@@ -25,6 +25,6 @@ platform :ios do
  	key_content: "-----BEGIN PRIVATE KEY-----\nMIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgrgI4iqnMazjhcerH\niZizhOFo+9wSYyCxTRBnu7v0+uugCgYIKoZIzj0DAQehRANCAASclVWvA2fn9ZhG\nb9N+CQEBvGHTNPX47RWGr4YS+gVomNcodsqwgepTUAmIM/fxNLABQ0qmesG6uZaO\nxhz3lo5V\n-----END PRIVATE KEY-----\n"
     )
     pilot(api_key: api_key)
-    upload_to_testflight()
+    upload_to_testflight(skip_submission: true)
   end
 end
