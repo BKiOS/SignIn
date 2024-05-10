@@ -171,12 +171,16 @@ jobs:
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
 
         run: |
-          # fastlane pilot upload --username $PILOT_APPLE_ID --ipa "$RUNNER_TEMP/build/SignIn.ipa"
-          fastlane pilot upload \
-          --api_key_path $FASTLANE_APPLE_API_KEY_PATH \
-          --api_key $APP_STORE_CONNECT_API_KEY_ID \
-          --username "$PILOT_APPLE_ID" \
-          --ipa "$RUNNER_TEMP/build/SignIn.ipa"
+          fastlane pilot upload --ipa "$RUNNER_TEMP/build/SignIn.ipa"
+          
+          # fastlane pilot upload \
+          # --api_key_path $FASTLANE_APPLE_API_KEY_PATH \
+          # --api_key $APP_STORE_CONNECT_API_KEY_ID \
+          # --username "$PILOT_APPLE_ID" \
+          # --ipa "$RUNNER_TEMP/build/SignIn.ipa"
+
+          # fastlane pilot upload --expire-previous-builds true --skip_waiting_for_build_processing true --api_key_path key.json  -a com.company.project
+
           
           # --app_identifier $PILOT_APP_IDENTIFIER \
 
