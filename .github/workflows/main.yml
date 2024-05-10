@@ -157,19 +157,19 @@ jobs:
           
       - name: Upload to TestFlight
         env:
-          APP_STORE_CONNECT_USERNAME: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
+          # APP_STORE_CONNECT_USERNAME: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
           APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
           APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
-          APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
+          # APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
-          PILOT_APPLE_ID: $APP_STORE_CONNECT_USERNAME
+          PILOT_APPLE_ID: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
           FASTLANE_APPLE_API_KEY_PATH: $RUNNER_TEMP/AuthKey.p8
-          PILOT_APP_IDENTIFIER: $APP_BUNDLE_ID
+          PILOT_APP_IDENTIFIER: ${{ secrets.APP_BUNDLE_ID }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
 
         run: |
-          # fastlane pilot upload --username $APP_STORE_CONNECT_USERNAME --ipa "$RUNNER_TEMP/build/SignIn.ipa"
-          fastlane pilot upload -u $APP_STORE_CONNECT_USERNAME -p $FASTLANE_PASSWORD -a $APP_BUNDLE_ID -i $RUNNER_TEMP/build/SignIn.ipa
+          # fastlane pilot upload --username $PILOT_APPLE_ID --ipa "$RUNNER_TEMP/build/SignIn.ipa"
+          fastlane pilot upload -u $PILOT_APPLE_ID -p $FASTLANE_PASSWORD -a $APP_BUNDLE_ID -i $RUNNER_TEMP/build/SignIn.ipa
           
       - name: Clean up workspace
         run: |
