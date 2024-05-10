@@ -169,7 +169,7 @@ jobs:
 
         run: |
           # fastlane pilot upload --username $PILOT_APPLE_ID --ipa "$RUNNER_TEMP/build/SignIn.ipa"
-          fastlane pilot upload -u $PILOT_APPLE_ID -p $FASTLANE_PASSWORD -a $APP_BUNDLE_ID -i $RUNNER_TEMP/build/SignIn.ipa
+          fastlane pilot upload -u $PILOT_APPLE_ID -p $FASTLANE_PASSWORD -a $APP_BUNDLE_ID -i $/Users/runner/work/_temp/build/SignIn.ipa
           
       - name: Clean up workspace
         run: |
