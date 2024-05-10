@@ -21,12 +21,13 @@ class Fastfile: LaneFile {
             "signingStyle": "manual",
             "provisioningProfiles": [appIdentifier: "DemoTest"]
         ]
-        let version = getVersionNumber(target: "SignIn")
-        let date = Date.getCurrentDate()
+        // let version = getVersionNumber(target: "SignIn")
+        // let date = Date.getCurrentDate()
         
-        let buildName = "SignIn_\(version)_\(date).ipa"
-        print(buildName)
-        buildApp(workspace: "SignIn.xcworkspace", scheme: "SignIn", clean: true, outputName: .userDefined(buildName), exportMethod: "development", exportOptions: .userDefined(export))
+        // let buildName = "SignIn_\(version)_\(date).ipa"
+        // print(buildName)
+        // buildApp(workspace: "SignIn.xcworkspace", scheme: "SignIn", clean: true, outputName: .userDefined(buildName), exportMethod: "development", exportOptions: .userDefined(export))
+	uploadToTestflight(username: "boobalan.m@spantechnologyservices.com")
     }
     
     
