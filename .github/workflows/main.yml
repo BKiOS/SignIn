@@ -24,7 +24,6 @@ jobs:
           BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
           KEYCHAIN_PASSWORD: ${{ secrets.P12_PASSWORD }}
         run: |
-          cp BKiOS.p8 $RUNNER_TEMP/BKiOS.p8
           # create variables
           CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
           PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
@@ -46,6 +45,7 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+          cp BKiOS.p8 $RUNNER_TEMP/AuthKey.p8
           
       - name: check Xcode version
         run: /usr/bin/xcodebuild -version
@@ -164,7 +164,7 @@ jobs:
           APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
           PILOT_APPLE_ID: $APP_STORE_CONNECT_USERNAME
-          FASTLANE_APPLE_API_KEY_PATH: $RUNNER_TEMP/BKiOS.p8
+          FASTLANE_APPLE_API_KEY_PATH: $RUNNER_TEMP/AuthKey.p8
         run: |
           # fastlane pilot upload --ipa "$RUNNER_TEMP/build/SignIn.ipa"
           fastlane pilot upload --username $APP_STORE_CONNECT_USERNAME --ipa "$RUNNER_TEMP/build/SignIn.ipa"
