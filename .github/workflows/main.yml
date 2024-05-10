@@ -66,28 +66,28 @@ jobs:
         run: |
           cd SignIn/
           ls
-      - name: Update provisioning profile specifier in Xcode project
-        run: |
-          gem install xcodeproj
-          ruby - <<EOF
-          require 'xcodeproj'
-          # Define the path to your Xcode project
-          project_path = 'SignIn/SignIn.xcodeproj'
-          # Define the target name
-          target_name = 'SignIn'
-          # Define the provisioning profile specifier
-          provisioning_profile_specifier = "DemoTest"
-          # Open the Xcode project
-          project = Xcodeproj::Project.open(project_path)
-          # Find the target
-          target = project.targets.find { |t| t.name == target_name }
-          # Update the provisioning profile settings
-          target.build_configuration_list.build_configurations.each do |configuration|
-            configuration.build_settings['PROVISIONING_PROFILE_SPECIFIER'] = provisioning_profile_specifier
-          end
-          # Save the changes to the Xcode project file
-          project.save
-          EOF
+      # - name: Update provisioning profile specifier in Xcode project
+      #   run: |
+      #     gem install xcodeproj
+      #     ruby - <<EOF
+      #     require 'xcodeproj'
+      #     # Define the path to your Xcode project
+      #     project_path = 'SignIn/SignIn.xcodeproj'
+      #     # Define the target name
+      #     target_name = 'SignIn'
+      #     # Define the provisioning profile specifier
+      #     provisioning_profile_specifier = "DemoTest"
+      #     # Open the Xcode project
+      #     project = Xcodeproj::Project.open(project_path)
+      #     # Find the target
+      #     target = project.targets.find { |t| t.name == target_name }
+      #     # Update the provisioning profile settings
+      #     target.build_configuration_list.build_configurations.each do |configuration|
+      #       configuration.build_settings['PROVISIONING_PROFILE_SPECIFIER'] = provisioning_profile_specifier
+      #     end
+      #     # Save the changes to the Xcode project file
+      #     project.save
+      #     EOF
       # - name: Build and Archive
       #   id: build_archive
       #   run: |
@@ -169,7 +169,7 @@ jobs:
 
         run: |
           # fastlane pilot upload --username $PILOT_APPLE_ID --ipa "$RUNNER_TEMP/build/SignIn.ipa"
-          fastlane pilot upload -u $PILOT_APPLE_ID -p $FASTLANE_PASSWORD -a $APP_BUNDLE_ID -i $/Users/runner/work/_temp/build/SignIn.ipa
+          fastlane pilot upload -u $PILOT_APPLE_ID -p $FASTLANE_PASSWORD -a $APP_BUNDLE_ID -i "/Users/runner/work/_temp/build/SignIn.ipa"
           
       - name: Clean up workspace
         run: |
