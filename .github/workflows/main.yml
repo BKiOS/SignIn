@@ -173,9 +173,11 @@ jobs:
           fastlane pilot upload \
           --api_key_path $FASTLANE_APPLE_API_KEY_PATH \
           --api_key $APP_STORE_CONNECT_API_KEY_ID \
-          --app_identifier $PILOT_APP_IDENTIFIER \
+          --username "$PILOT_APPLE_ID" \
           --ipa "$RUNNER_TEMP/build/SignIn.ipa"
           
+          # --app_identifier $PILOT_APP_IDENTIFIER \
+
       - name: Clean up workspace
         run: |
           rm -rf $RUNNER_TEMP/
