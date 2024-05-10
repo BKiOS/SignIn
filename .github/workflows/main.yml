@@ -164,7 +164,7 @@ jobs:
           PILOT_APPLE_ID: $APP_STORE_CONNECT_USERNAME
         run: |
           # fastlane pilot upload --ipa "$RUNNER_TEMP/build/SignIn.ipa"
-          fastlane pilot upload -u $APP_STORE_CONNECT_USERNAME -i $RUNNER_TEMP/build/SignIn.ipa -a $AppBundleID
+            - fastlane pilot upload --username $APP_STORE_CONNECT_USERNAME --ipa "$RUNNER_TEMP/build/SignIn.ipa"
           
       - name: Clean up workspace
         run: |
