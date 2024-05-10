@@ -165,6 +165,7 @@ jobs:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
           PILOT_APPLE_ID: $APP_STORE_CONNECT_USERNAME
           FASTLANE_APPLE_API_KEY_PATH: $RUNNER_TEMP/AuthKey.p8
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
         run: |
           # fastlane pilot upload --ipa "$RUNNER_TEMP/build/SignIn.ipa"
           fastlane pilot upload --username $APP_STORE_CONNECT_USERNAME --ipa "$RUNNER_TEMP/build/SignIn.ipa"
