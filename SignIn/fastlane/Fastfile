@@ -24,7 +24,7 @@ platform :ios do
  	issuer_id: "69a6de79-ff37-47e3-e053-5b8c7c11a4d1",
  	key_content: "-----BEGIN PRIVATE KEY-----\nMIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgrgI4iqnMazjhcerH\niZizhOFo+9wSYyCxTRBnu7v0+uugCgYIKoZIzj0DAQehRANCAASclVWvA2fn9ZhG\nb9N+CQEBvGHTNPX47RWGr4YS+gVomNcodsqwgepTUAmIM/fxNLABQ0qmesG6uZaO\nxhz3lo5V\n-----END PRIVATE KEY-----\n"
     )
-    pilot(api_key: api_key)
+    pilot(api_key: api_key, ipa: ENV['APP_PATH'])
     upload_to_testflight(skip_submission: true)
   end
 end
