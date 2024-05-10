@@ -45,7 +45,7 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-          mv BKiOS.p8 $RUNNER_TEMP/AuthKey.p8
+          mv BKiOS.json $RUNNER_TEMP/AuthKey.json
           cd $RUNNER_TEMP
           ls
       - name: check Xcode version
@@ -164,7 +164,7 @@ jobs:
           # APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
           PILOT_APPLE_ID: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
-          FASTLANE_APPLE_API_KEY_PATH: $RUNNER_TEMP/AuthKey.p8
+          FASTLANE_APPLE_API_KEY_PATH: $RUNNER_TEMP/AuthKey.json
           PILOT_APP_IDENTIFIER: ${{ secrets.APP_BUNDLE_ID }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
 
