@@ -29,7 +29,7 @@ platform :ios do
       workspace: "SignIn.xcworkspace",
       scheme: "SignIn",
       configuration: "Debug",
-      export_method: "Development",
+      export_method: "development",
       clean: true,
       archive_path: ENV['ARCHIVE_PATH'],
       output_directory: ENV['OUTPUT_PATH'],
