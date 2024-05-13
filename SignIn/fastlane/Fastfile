@@ -37,7 +37,7 @@ platform :ios do
       archive_path: ENV['ARCHIVE_PATH'],
       output_directory: ENV['OUTPUT_PATH'],
       sdk: "iphoneos",
-      exportOptions: .userDefined(export_options)
+      exportOptions: export_options
     )
 
     upload_to_testflight(
