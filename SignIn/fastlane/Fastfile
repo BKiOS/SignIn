@@ -25,6 +25,17 @@ platform :ios do
  	key_content: "-----BEGIN PRIVATE KEY-----\nMIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgrgI4iqnMazjhcerH\niZizhOFo+9wSYyCxTRBnu7v0+uugCgYIKoZIzj0DAQehRANCAASclVWvA2fn9ZhG\nb9N+CQEBvGHTNPX47RWGr4YS+gVomNcodsqwgepTUAmIM/fxNLABQ0qmesG6uZaO\nxhz3lo5V\n-----END PRIVATE KEY-----\n"
     )
 
+    build_app(
+      workspace: "SignIn.xcworkspace",
+      scheme: "SignIn",
+      configuration: "Debug",
+      export_method: "Development",
+      clean: true,
+      archive_path: ENV['ARCHIVE_PATH'],
+      output_directory: ENV['OUTPUT_PATH'],
+      sdk: "iphoneos"
+    )
+
     upload_to_testflight(
 	username: ENV['PILOT_APPLE_ID'],
 	api_key: api_key,
@@ -35,7 +46,6 @@ platform :ios do
 	itc_provider:ENV['ITC_TEAM_ID']
     )
 
-    pilot(api_key: api_key, ipa: ENV['APP_PATH'], apple_id: ENV['PILOT_APPLE_ID'])
 
   end
 end
