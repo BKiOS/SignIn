@@ -32,7 +32,7 @@ platform :ios do
     build_app(
       workspace: "SignIn.xcworkspace",
       scheme: "SignIn",
-      export_method: "Development",
+      export_method: "development",
       clean: true,
       archive_path: ENV['ARCHIVE_PATH'],
       output_directory: ENV['OUTPUT_PATH'],
