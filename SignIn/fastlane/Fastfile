@@ -42,11 +42,14 @@ platform :ios do
     )
 
     upload_to_testflight(
+	skip_submission: true,
 	username: ENV['PILOT_APPLE_ID'],
-	api_key: api_key,
+    )
+
+    pilot(
+  	api_key: api_key,
 	ipa: ENV['APP_PATH'],
 	app_identifier: ENV['PILOT_APP_IDENTIFIER'],
-	skip_submission: true,
 	itc_provider:ENV['ITC_TEAM_ID']
     )
   end
