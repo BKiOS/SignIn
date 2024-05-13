@@ -170,8 +170,8 @@ jobs:
           APP_PATH: "$RUNNER_TEMP/build/SignIn.ipa"
         run: |
           cd SignIn/
-          fastlane betaLane
-          # fastlane pilot upload --ipa "$RUNNER_TEMP/build/SignIn.ipa"
+          # fastlane betaLane
+          fastlane pilot upload --ipa "$RUNNER_TEMP/build/SignIn.ipa"
           
           # fastlane pilot upload \
           # --api_key_path $FASTLANE_APPLE_API_KEY_PATH \
