@@ -158,13 +158,10 @@ jobs:
           
       - name: Upload to TestFlight
         env:
-          # APP_STORE_CONNECT_USERNAME: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
           APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
           APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
-          # APP_BUNDLE_ID: ${{ secrets.APP_BUNDLE_ID }}
-          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
           PILOT_APPLE_ID: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
-          FASTLANE_APPLE_API_KEY_PATH: $RUNNER_TEMP/AuthKey.json
+          FASTLANE_APPLE_API_KEY_PATH: ${{ runner.temp }}/AuthKey.json
           PILOT_APP_IDENTIFIER: ${{ secrets.APP_BUNDLE_ID }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           APP_PATH: ${{ runner.temp }}/build/SignIn.ipa
