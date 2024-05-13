@@ -167,7 +167,7 @@ jobs:
           FASTLANE_APPLE_API_KEY_PATH: $RUNNER_TEMP/AuthKey.json
           PILOT_APP_IDENTIFIER: ${{ secrets.APP_BUNDLE_ID }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-          APP_PATH: $RUNNER_TEMP/build/SignIn.ipa
+          APP_PATH: ${{ runner.temp }}/build/SignIn.ipa
         run: |
           cd SignIn/
           fastlane betaLane
