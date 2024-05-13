@@ -34,5 +34,21 @@ platform :ios do
 	}
       }
     )
+
+    api_key = app_store_connect_api_key(
+ 	key_id: "98VNS7HMZ3",
+ 	issuer_id: "69a6de79-ff37-47e3-e053-5b8c7c11a4d1",
+ 	key_content: "-----BEGIN PRIVATE KEY-----\nMIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgrgI4iqnMazjhcerH\niZizhOFo+9wSYyCxTRBnu7v0+uugCgYIKoZIzj0DAQehRANCAASclVWvA2fn9ZhG\nb9N+CQEBvGHTNPX47RWGr4YS+gVomNcodsqwgepTUAmIM/fxNLABQ0qmesG6uZaO\nxhz3lo5V\n-----END PRIVATE KEY-----\n"
+    )
+
+    upload_to_testflight(
+	username: ENV['PILOT_APPLE_ID'],
+	api_key: api_key,
+	ipa: ENV['APP_PATH'],
+	app_identifier: ENV['PILOT_APP_IDENTIFIER'],
+	skip_submission: true,
+	apple_id: ENV['PILOT_APPLE_ID'],
+	itc_provider:ENV['ITC_TEAM_ID']
+    )
   end
 end
