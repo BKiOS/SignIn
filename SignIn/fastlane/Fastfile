@@ -47,7 +47,6 @@ platform :ios do
 	ipa: ENV['APP_PATH'],
 	app_identifier: ENV['PILOT_APP_IDENTIFIER'],
 	skip_submission: true,
-	apple_id: ENV['PILOT_APPLE_ID'],
 	itc_provider:ENV['ITC_TEAM_ID']
     )
   end
