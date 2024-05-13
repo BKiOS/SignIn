@@ -30,10 +30,9 @@ platform :ios do
       export_options: {
 	"signingStyle": "manual",
 	"provisioningProfiles": {
-		appIdentifier: "DemoTest"
+		"com.newProject.SignIn": "DemoTest"
 	}
       }
     )
-
   end
 end
