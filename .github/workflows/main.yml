@@ -168,6 +168,7 @@ jobs:
           APP_PATH: ${{ runner.temp }}/build/SignIn.ipa
           ARCHIVE_PATH: ${{ runner.temp }}/SignIn.xcarchive
           OUTPUT_PATH: ${{ runner.temp }}/build
+          APPLE_ID_UNI: $${{ secrets.APPLE_ID_UNI }}
         run: |
           cd SignIn/
           fastlane betaLane
