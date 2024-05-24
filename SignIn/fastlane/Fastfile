@@ -1,0 +1,39 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Description of what the lane does"
+  lane :betaLane do
+    # add actions here: https://docs.fastlane.tools/actions
+    
+     build_app(
+      workspace: "SignIn.xcworkspace",
+      scheme: "SignIn",
+      export_method: "development",
+      clean: true,
+      archive_path: ENV['ARCHIVE_PATH'],
+      output_directory: ENV['OUTPUT_PATH'],
+      sdk: "iphoneos",
+      export_options: {
+	"signingStyle": "manual",
+	"provisioningProfiles": {
+		"com.newProject.SignIn": "DemoTest"
+	}
+      }
+    )
+  end
+end
