@@ -26,7 +26,7 @@ platform :ios do
       export_method: "development",
       clean: true,
       archive_path: './build/SignIn.xcarchive',
-      output_directory: './build/,
+      output_directory: './build/',
       sdk: "iphoneos",
       export_options: {
 	"signingStyle": "manual",
